@@ -9,16 +9,20 @@ class MoveableObject {  //Eine Class ist eine Beschreibung wie ein Objekt ausseh
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
-    acceleration = 1;
+    acceleration = 2.5;
 
 
     applyGravity() {
         setInterval(() => {
-            if (this.y < 120) {
+            if (this.isAboveGround() || this.speedY > 0) {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
         }, 1000 / 25)
+    }
+
+    isAboveGround() {
+        return this.y < 120;
     }
 
 
@@ -36,15 +40,25 @@ class MoveableObject {  //Eine Class ist eine Beschreibung wie ein Objekt ausseh
         });
 
     }
-
-    moveRight() {
-        console.log('moving right');
+    draw(ctx) {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+    drawFrame(ctx) {
+        ctx.beginPath();
+        ctx.lineWidth = '5';
+        ctx.strokeStyle = 'blue';
+        ctx.rect(this.x, this.y, this.width, this.height);
+        ctx.stroke();
     }
 
+    moveRight() {
+        this.x += this.speed;
+
+    }
+
+
     moveLeft() {
-        setInterval(() => {
-            this.x -= this.speed;
-        }, 1000 / 60);
+        this.x -= this.speed;
 
     }
 
@@ -55,5 +69,9 @@ class MoveableObject {  //Eine Class ist eine Beschreibung wie ein Objekt ausseh
         let path = this.IMAGES_WALKING[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+    }
+
+    jump() {
+        this.speedY = 30;
     }
 }

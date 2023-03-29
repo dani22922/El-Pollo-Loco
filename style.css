@@ -2,6 +2,10 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    background: url(img/EL\ Pollo\ loco.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: end;
 }
 
 
