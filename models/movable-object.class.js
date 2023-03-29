@@ -7,6 +7,7 @@ class MoveableObject {  //Eine Class ist eine Beschreibung wie ein Objekt ausseh
     imageCache = {};
     currentImage = 0;
     speed = 0.15;
+    otherDirection = false;
 
     loadImage(path) {
         this.img = new Image(); // this.img = document.getElementById('image') <img id="image" src="">
