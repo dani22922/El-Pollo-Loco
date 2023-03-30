@@ -22,9 +22,11 @@ class Character extends MoveableObject {
 
     ];
 
-    IMAGES_HURT = ['img/2_character_pepe/4_hurt/H-41.png',
+    IMAGES_HURT = [
+        'img/2_character_pepe/4_hurt/H-41.png',
         'img/2_character_pepe/4_hurt/H-42.png',
-        'img/2_character_pepe/4_hurt/H-43.png'];
+        'img/2_character_pepe/4_hurt/H-43.png'
+    ];
 
     IMAGES_DEAD = [
 
