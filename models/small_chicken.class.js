@@ -10,7 +10,7 @@ class SmallChicken extends MoveableObject {
 
     y = 350;
     constructor() {
-        super().loadImage(this.IMAGES_WALKING[0]);
+        super().loadImage('img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
 
 

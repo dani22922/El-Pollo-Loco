@@ -10,6 +10,8 @@ class MoveableObject {  //Eine Class ist eine Beschreibung wie ein Objekt ausseh
     otherDirection = false;
     speedY = 0;
     acceleration = 2.5;
+    energy = 100;
+    lasthit = 0;
 
 
     applyGravity() {
@@ -61,6 +63,27 @@ class MoveableObject {  //Eine Class ist eine Beschreibung wie ein Objekt ausseh
         // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
 
     }
+    hit() {
+        this.energy -= 5;
+        if (this.energy < 0) {
+            this.energy = 0;
+
+        } else {
+            this.lasthit = new Date().getTime(); //  Zeit speichern in Zahlenform millisekunden seit 1.1.1970
+        }
+    }
+
+    isDead() {
+        return this.energy == 0;
+    }
+
+    isHurt() {
+        let timePassed = new Date().getTime() - this.lasthit; // Diffirenz in millisekunden
+        timePassed = timePassed / 1000; // in sekunden
+        return timePassed < 1;
+    }
+
+
 
     moveRight() {
         this.x += this.speed;
@@ -73,11 +96,11 @@ class MoveableObject {  //Eine Class ist eine Beschreibung wie ein Objekt ausseh
 
     }
 
-    playAnimation() {
+    playAnimation(images) {
         // Walk Animation
-        let i = this.currentImage % this.IMAGES_WALKING.length; // let i = 0 % 6;    % Modulo bedeutet Mathematisch Rest 
+        let i = this.currentImage % images.length; // let i = 0 % 6;    % Modulo bedeutet Mathematisch Rest 
         // i= 0,1,2,3,4,5,6  ,0,1,2,3,4,5,6  ,0,1,2,3,4,5,6  ,0,1,2,3,4,5,6 0,1,2,3,4,5,6 0,1,2,3,4,5,6
-        let path = this.IMAGES_WALKING[i];
+        let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
     }
