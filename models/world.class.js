@@ -13,6 +13,7 @@ class World {
 
 
 
+
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -31,6 +32,7 @@ class World {
         setInterval(() => {
 
             this.checkCollisions();
+            this.checkBottleChickenCollisions();
             this.checkThrowObjects();
         }, 200);
     }
@@ -54,6 +56,19 @@ class World {
         });
     }
 
+    // Bottle, Chicken Collision
+    checkBottleChickenCollisions() {
+        setInterval(() => {
+            this.level.enemies.forEach((enemy) => {
+                if (this.throwableObjects.isColliding(enemy)) {
+                    this.enemy.hit();
+                    this.statusBar.setPercentage(this.character.energy);
+                    console.log('test')
+                }
+            });
+        });
+    }
+
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -71,6 +86,9 @@ class World {
 
 
         this.addToMap(this.character);
+
+        this.addObjectsToMap(this.level.collectBottle);
+        this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);
