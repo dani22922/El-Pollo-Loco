@@ -52,6 +52,15 @@ class MoveableObject extends DrawableObject {  //Eine Class ist eine Beschreibun
         timePassed = timePassed / 1000; // in sekunden
         return timePassed < 1;
     }
+    // Wieviel Schaden macht eine Flasche? 
+    hitByBottle() {
+        this.energy -= 100;
+        if (this.energy < 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
 
 
 

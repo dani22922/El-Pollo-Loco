@@ -34,7 +34,7 @@ class World {
             this.checkCollisions();
             this.checkBottleChickenCollisions();
             this.checkThrowObjects();
-        }, 200);
+        }, 300);
     }
 
     checkThrowObjects() {
@@ -56,16 +56,25 @@ class World {
         });
     }
 
-    // Bottle, Chicken Collision
+    //Bottle, Chicken Collision
     checkBottleChickenCollisions() {
-        setInterval(() => {
+        this.throwableObjects.forEach((bottle) => {
             this.level.enemies.forEach((enemy) => {
-                if (this.throwableObjects.isColliding(enemy)) {
-                    this.enemy.hit();
-                    this.statusBar.setPercentage(this.character.energy);
-                    console.log('test')
+                if (enemy.isColliding(bottle)) {
+                    enemy.hitByBottle();
+                    console.log('Colission with enemy, energy', enemy.energy);
                 }
             });
+        })
+    }
+    //Der Gegner wird von der Flasche getroffen
+    hitByBottle(enemy) {
+        this.throwableObjects.forEach((bottle) => {
+            if (bottle.isColliding(enemy)) {
+                enemy.hit();
+                bottle.hitEnemy = true;
+                this.removeChicken(enemy);
+            }
         });
     }
 
