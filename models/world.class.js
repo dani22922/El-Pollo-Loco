@@ -34,6 +34,7 @@ class World {
             this.checkCollisions();
             this.checkBottleChickenCollisions();
             this.checkThrowObjects();
+            this.checkCoinCollisions();
         }, 300);
     }
 
@@ -43,7 +44,7 @@ class World {
             this.throwableObjects.push(bottle);
         }
     }
-
+    // Die Kollisionen werden abgefragt 
     checkCollisions() {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
@@ -54,6 +55,24 @@ class World {
                 }
             });
         });
+    }
+
+    //Character Coin Collision
+    checkCoinCollisions() {
+        this.level.coins.forEach((coin) => {
+            if (this.character.isColliding(coin)) {
+                console.log('take', coin)
+                this.takeCoin(coin);
+            }
+        });
+    }
+
+    //Coin wird eingesammelt
+    takeCoin(coin) {
+        this.character.Coins++;
+        this.coinBar.setPercentage(this.character.Coins);
+        this.level.coins.splice(this.level.coins.indexOf(coin), 1);
+
     }
 
     //Bottle, Chicken Collision
@@ -72,11 +91,12 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             if (bottle.isColliding(enemy)) {
                 enemy.hit();
-                bottle.hitEnemy = true;
-                this.removeChicken(enemy);
+
             }
         });
     }
+
+
 
 
     draw() {
@@ -131,14 +151,14 @@ class World {
             this.flipImageBack(mo);
         }
     }
-
+    //wir spiegeln das Bild
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
         this.ctx.scale(-1, 1);
         mo.x = mo.x * -1;
     }
-
+    // das Bild wird nochmal gespiegelt
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();

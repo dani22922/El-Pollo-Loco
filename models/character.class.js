@@ -1,8 +1,12 @@
 class Character extends MoveableObject {
+
     height = 300;
     width = 150;
     y = 80;
     speed = 10;
+
+    Coins = 3;
+
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
         'img/2_character_pepe/2_walk/W-22.png',
@@ -19,6 +23,7 @@ class Character extends MoveableObject {
         'img/2_character_pepe/3_jump/J-36.png',
         'img/2_character_pepe/3_jump/J-37.png',
         'img/2_character_pepe/3_jump/J-38.png',
+
 
     ];
 
@@ -44,7 +49,7 @@ class Character extends MoveableObject {
     walking_sound = new Audio('audio/walking_2.mp3')
 
     constructor() {
-        super().loadImage('img/2_character_pepe/2_walk/W-21.png');
+        super().loadImage('img/2_character_pepe/1_idle/idle/I-1.png');
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
         this.loadImages(this.IMAGES_HURT);
@@ -82,20 +87,30 @@ class Character extends MoveableObject {
 
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
-            } else if (this.isHurt()) {
+            }
+            if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
 
             }
-            else if (this.isAboveGround()) {
+
+            if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
-            } else {
+            }
+
+            {
+
                 if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                     this.playAnimation(this.IMAGES_WALKING);
                 }
             }
-        }, 50);
+        }, 100);
 
 
     }
 
 }
+
+
+
+
+

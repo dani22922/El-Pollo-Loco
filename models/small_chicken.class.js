@@ -38,6 +38,7 @@ class SmallChicken extends MoveableObject {
             this.playAnimation(this.IMAGES_WALKING);
         }, 100);
 
+
         setInterval(() => {
 
             if (this.isDead()) {
