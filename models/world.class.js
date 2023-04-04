@@ -72,7 +72,7 @@ class World {
         });
     }
 
-    //Coin wird eingesammelt
+    //Coin wird eingesammelt und die Coinbar wird um 1aufgefüllt
     takeCoin(coin) {
         this.character.coins++;
         this.coinBar.setPercentage(this.character.coins);
@@ -98,6 +98,7 @@ class World {
 
     }
 
+
     //Bottle und Chicken Collision
     checkBottleChickenCollisions() {
         this.throwableObjects.forEach((bottle) => {
@@ -115,6 +116,18 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             if (bottle.isColliding(enemy)) {
                 enemy.hit();
+
+            }
+        });
+    }
+    // Auf Gegner springen
+    jumpOnChicken() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+                !this.character.isHurt();
+                this.character.jumpOnChicken = true;
+                console.log('jumping')
+
 
             }
         });

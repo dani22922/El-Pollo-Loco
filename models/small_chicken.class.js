@@ -4,6 +4,9 @@ class SmallChicken extends MoveableObject {
     width = 70;
     energy = 100;
 
+    /* chicken_sound = new Audio('audio/chicken.mp3'); */
+
+
     IMAGES_WALKING = [
         'img/3_enemies_chicken/chicken_small/1_walk/1_w.png',
         'img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
@@ -31,6 +34,7 @@ class SmallChicken extends MoveableObject {
         setInterval(() => {
             if (!this.isDead()) {
                 this.moveLeft();
+                /*  this.chicken_sound.play(); */
             }
         }, 1000 / 60);
 
