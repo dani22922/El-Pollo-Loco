@@ -53,7 +53,7 @@ class MoveableObject extends DrawableObject {  //Eine Class ist eine Beschreibun
         return timePassed < 1;
     }
 
-    // Wieviel Schaden macht eine Flasche? 
+    // -100 Energy wenn von Flasche getroffen 
     hitByBottle() {
         this.energy -= 100;
         if (this.energy < 0) {

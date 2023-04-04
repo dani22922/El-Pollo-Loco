@@ -14,6 +14,7 @@ class World {
 
 
 
+
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -35,6 +36,8 @@ class World {
             this.checkBottleChickenCollisions();
             this.checkThrowObjects();
             this.checkCoinCollisions();
+            this.checkBottleCollisons();
+
         }, 300);
     }
 
@@ -44,17 +47,19 @@ class World {
             this.throwableObjects.push(bottle);
         }
     }
-    // Die Kollisionen werden abgefragt 
+
+    // Die Kollisionen zwischen Character und Gegner werden abgefragt 
     checkCollisions() {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy)) {
+                if (this.character.isColliding(enemy) /* && !this.level.enemies.isDead(enemy) */) {
                     this.character.hit();
                     this.statusBar.setPercentage(this.character.energy);
+                    console.log('Colission with char', this.character.energy);
 
                 }
             });
-        });
+        }, 500);
     }
 
     //Character Coin Collision
@@ -69,13 +74,31 @@ class World {
 
     //Coin wird eingesammelt
     takeCoin(coin) {
-        this.character.Coins++;
-        this.coinBar.setPercentage(this.character.Coins);
+        this.character.coins++;
+        this.coinBar.setPercentage(this.character.coins);
         this.level.coins.splice(this.level.coins.indexOf(coin), 1);
 
     }
 
-    //Bottle, Chicken Collision
+    //Kollision zwischen character und Flasche
+    checkBottleCollisons() {
+        this.level.bottle.forEach((bottle) => {
+            if (this.character.isColliding(bottle)) {
+                console.log('take', bottle)
+                this.takeBottle(bottle);
+            }
+        });
+    }
+
+    //Flasche wird eingesammelt
+    takeBottle(bottle) {
+        this.character.bottle++;
+        this.bottleBar.setPercentage(this.character.bottle);
+        this.level.bottle.splice(this.level.bottle.indexOf(bottle), 1);
+
+    }
+
+    //Bottle und Chicken Collision
     checkBottleChickenCollisions() {
         this.throwableObjects.forEach((bottle) => {
             this.level.enemies.forEach((enemy) => {
@@ -86,6 +109,7 @@ class World {
             });
         })
     }
+
     //Der Gegner wird von der Flasche getroffen
     hitByBottle(enemy) {
         this.throwableObjects.forEach((bottle) => {
@@ -116,7 +140,7 @@ class World {
 
         this.addToMap(this.character);
 
-        this.addObjectsToMap(this.level.collectBottle);
+        this.addObjectsToMap(this.level.bottle);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);

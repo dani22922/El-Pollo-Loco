@@ -5,7 +5,8 @@ class Character extends MoveableObject {
     y = 80;
     speed = 10;
 
-    Coins = 3;
+    coins = 0;
+    bottle = 0;
 
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
@@ -83,11 +84,14 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
 
+
+
         setInterval(() => {
 
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
             }
+
             if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
 
@@ -106,7 +110,10 @@ class Character extends MoveableObject {
         }, 100);
 
 
+
+
     }
+
 
 }
 
