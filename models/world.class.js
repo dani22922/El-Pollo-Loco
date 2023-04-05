@@ -22,6 +22,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.charCheck();
     }
 
     setWorld() {
@@ -32,34 +33,49 @@ class World {
     run() {
         setInterval(() => {
 
-            this.checkCollisions();
+
             this.checkBottleChickenCollisions();
             this.checkThrowObjects();
             this.checkCoinCollisions();
             this.checkBottleCollisons();
+            this.checkJumpOnChicken();
 
         }, 300);
     }
+    charCheck() {
+        setInterval(() => {
 
-    checkThrowObjects() {
+            this.checkCollisions();
+
+
+        }, 1000);
+    }
+
+    checkThrowObjects() {//TODO - 
         if (this.keyboard.D) {
             let bottle = new ThrowableObjects(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
+            this.removeBottle();
+            this.bottleBar.setPercentage(this.character.bottle);
+
         }
+    }
+    removeBottle() {
+        this.character.bottle -= 1;
     }
 
     // Die Kollisionen zwischen Character und Gegner werden abgefragt 
     checkCollisions() {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy) /* && !this.level.enemies.isDead(enemy) */) {
+                if (this.character.isColliding(enemy) && !enemy.isDead()) {
                     this.character.hit();
                     this.statusBar.setPercentage(this.character.energy);
                     console.log('Colission with char', this.character.energy);
 
                 }
             });
-        }, 500);
+        }, 1000);
     }
 
     //Character Coin Collision
@@ -121,13 +137,13 @@ class World {
         });
     }
     // Auf Gegner springen
-    jumpOnChicken() {
+    checkJumpOnChicken() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+            if (this.character.isColliding(enemy) && this.character.isAboveGround() && !enemy.isDead()) {
                 !this.character.isHurt();
-                this.character.jumpOnChicken = true;
-                console.log('jumping')
-
+                enemy.hitByBottle();// Der Sprung macht genauso viel Schaden wie eine Flasche
+                this.character.jump();
+                console.log('jumping', enemy.energy)
 
             }
         });

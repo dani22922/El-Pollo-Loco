@@ -12,3 +12,87 @@ body {
 canvas {
     background-color: black;
 }
+
+
+.start-game img {
+    width: 720px;
+    height: 480px;
+
+}
+
+.start-game {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.start-btn {
+    background-color: black;
+    color: yellow;
+    border-radius: 15px;
+    width: 150px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-large;
+    height: 30px;
+    cursor: pointer;
+
+}
+
+.endPic {
+    width: 720px;
+    height: 480px;
+    border-radius: 15px;
+}
+
+.reStart {
+    background-color: black;
+    color: yellow;
+    border-radius: 15px;
+    width: 150px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-large;
+    height: 30px;
+    cursor: pointer;
+
+}
+
+.gameOver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.endPic {
+    animation: mymove 5s infinite;
+}
+
+@keyframes mymove {
+    50% {
+        transform: rotateY(180deg);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.d-none {
+    display: none;
+}

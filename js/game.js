@@ -1,15 +1,61 @@
+let vid = document.getElementById('myVideo');
 let canvas;
 let world;
 let keyboard = new Keyboard();
 
+let intervalIds = [];
+
+function setStoppableInterval(fn, time) {
+    let id = setInterval(fn, time);
+    intervalIds.push(id);
+}
+
+function gameStop() {
+    intervalIds.forEach(clearInterval);
+}
+
+
+/* function playVid() {
+    vid.play();
+} */
+
+
 
 function init() {
+
+    document.getElementById('startGame').classList.add('d-none');
+    document.getElementById('myVideo').classList.add('d-none');
+    document.getElementById('start').classList.add('d-none');
+    document.getElementById('canvas').classList.remove('d-none');
+
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 
 
 
     console.log('My Character is', world.character);
+
+
+}
+
+//STOPPT ALLE INTERVALLE 
+function gameOver() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
+    document.getElementById('endPic').classList.remove('d-none');
+    document.getElementById('reStart').classList.remove('d-none');
+    document.getElementById('canvas').classList.add('d-none');
+
+
+}
+function restartGame() {
+
+    document.getElementById('startGame').classList.add('d-none');
+    document.getElementById('myVideo').classList.add('d-none');
+    document.getElementById('start').classList.add('d-none');
+    document.getElementById('canvas').classList.remove('d-none');
+
+    canvas = document.getElementById('canvas');
+    world = new World(canvas, keyboard);
 
 
 }
