@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/icons/favicon.png">
     <link rel="stylesheet" href="style.css">
 
 
@@ -39,21 +40,32 @@
     <div id="fullscreen" class="fullscreen">
         <div class="start-game" id="startGame">
 
-            <video id="myVideo" muted autoplay>
+            <video class="myvideo" id="myVideo" muted autoplay>
                 <source src="audio/EL.mp4" type="video/mp4">
                 <source src="audio/EL.mp4" type="video/ogg">
                 Your browser does not support HTML5 video.
             </video>
-            <button onclick="init()" id="start" class="start-btn">PLAY !</button>
 
         </div>
+        <div class="instruction-fullscreen  d-none-mobile " id="instructionFullscreen">
+            <span class="full"><img onclick="fullscreen()" src="img/icons/fullscreen-12-16.png"
+                    alt="Pfeil nach links">ENTER
+                FULLSCREEN</span>
+
+            <span class="left-arrow"><img src="img/icons/exit.png" alt="Pfeil nach rechts"> EXIT FULLSCREEN</span>
+
+
+
+
+        </div>
+        <button onclick="initLevel(),init()" id="start" class="start-btn">PLAY !</button>
         <canvas id="canvas" width="720" height="480" class="d-none">
 
 
 
         </canvas>
 
-        <div class="instruction d-none" id="instruction">
+        <div class="instruction d-none-mobile  d-none" id="instruction">
             <span class="left-arrow"><img src="img/icons/Left.png" alt="Pfeil nach links"> LEFT</span>
 
             <span class="left-arrow"><img src="img/icons/Right.png" alt="Pfeil nach rechts"> RIGHT</span>
