@@ -7,6 +7,7 @@ class MoveableObject extends DrawableObject {  //Eine Class ist eine Beschreibun
     lasthit = 0;
 
 
+
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -77,7 +78,7 @@ class MoveableObject extends DrawableObject {  //Eine Class ist eine Beschreibun
     }
 
     playAnimation(images) {
-        // Walk Animation
+        // anhand des Bildes ---> Animation
         let i = this.currentImage % images.length; // let i = 0 % 6;    % Modulo bedeutet Mathematisch Rest 
         // i= 0,1,2,3,4,5,6  ,0,1,2,3,4,5,6  ,0,1,2,3,4,5,6  ,0,1,2,3,4,5,6 0,1,2,3,4,5,6 0,1,2,3,4,5,6
         let path = images[i];
@@ -87,5 +88,6 @@ class MoveableObject extends DrawableObject {  //Eine Class ist eine Beschreibun
 
     jump() {
         this.speedY = 30;
+
     }
 }

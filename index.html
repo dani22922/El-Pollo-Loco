@@ -39,7 +39,7 @@
     <div id="fullscreen" class="fullscreen">
         <div class="start-game" id="startGame">
 
-            <video id="myVideo" muted autoplay width="1080" height="720">
+            <video id="myVideo" muted autoplay>
                 <source src="audio/EL.mp4" type="video/mp4">
                 <source src="audio/EL.mp4" type="video/ogg">
                 Your browser does not support HTML5 video.
@@ -52,10 +52,21 @@
 
 
         </canvas>
+
+        <div class="instruction d-none" id="instruction">
+            <span class="left-arrow"><img src="img/icons/Left.png" alt="Pfeil nach links"> LEFT</span>
+
+            <span class="left-arrow"><img src="img/icons/Right.png" alt="Pfeil nach rechts"> RIGHT</span>
+            <span class="left-arrow"><img src="img/icons/Space.png" alt="Pfeil nach rechts"> Jump</span>
+            <span class="left-arrow"><img src="img/icons/D.png" alt="Pfeil nach rechts"> ThrowBottle</span>
+
+
+
+        </div>
         <div class="gameOver" id="gameOver">
             <img id="endPic" class="endPic d-none" src="img/9_intro_outro_screens/game_over/game over.png"
                 alt="Game Over">
-            <button onclick="restartGame()" id="reStart" class="reStart d-none">RESTART !</button>
+            <button onclick="init()" id="reStart" class="reStart d-none">RESTART !</button>
         </div>
 
     </div>

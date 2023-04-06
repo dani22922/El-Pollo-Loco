@@ -2,12 +2,22 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background: url(img/EL\ Pollo\ loco.png);
+    /*  background: url(img/EL\ Pollo\ loco.png); */
     background-repeat: no-repeat;
     background-size: cover;
+    resize: none;
     justify-content: end;
+    height: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: x-large;
+
 }
 
+#myVideo {
+    width: 1080px;
+    height: 720px;
+}
 
 canvas {
     background-color: black;
@@ -34,11 +44,13 @@ canvas {
     width: 150px;
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
-    font-size: x-large;
-    height: 30px;
+    font-size: xx-large;
+    height: 50px;
     cursor: pointer;
 
 }
+
+
 
 .endPic {
     width: 720px;
@@ -70,6 +82,33 @@ canvas {
     animation: mymove 5s infinite;
 }
 
+.left-arrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.left-arrow img {
+    height: 32px;
+    width: 32px;
+}
+
+.right-arrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.right-arrow img {
+    height: 32px;
+    width: 32px;
+}
+
+.instruction {
+    display: flex;
+    justify-content: space-between;
+}
+
 @keyframes mymove {
     50% {
         transform: rotateY(180deg);
@@ -77,7 +116,27 @@ canvas {
 }
 
 
+/* MOBILE ANSICHT */
+@media only screen and (max-width: 600px) {
+    #canvas {
+        width: 100%;
+    }
 
+    #myVideo {
+        width: 80%;
+    }
+
+    .fullscreen {
+        width: 90%;
+    }
+
+    body {
+        width: 90%;
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+}
 
 
 

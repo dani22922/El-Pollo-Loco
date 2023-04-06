@@ -8,6 +8,9 @@ class Character extends MoveableObject {
     coins = 0;
     bottle = 0;
 
+    jump_sound = new Audio('audio/jump-sound.mp3');
+
+
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
         'img/2_character_pepe/2_walk/W-22.png',
@@ -57,7 +60,11 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.applyGravity();
         this.animate();
+
     }
+
+
+
 
     animate() {
 
@@ -87,72 +94,75 @@ class Character extends MoveableObject {
 
 
 
-        /* setInterval(() => {
+        setInterval(() => {
+            if (this.isAboveGround()) {
+                this.playAnimation(this.IMAGES_JUMPING);
+                this.jump_sound.play();
 
+            }
 
+            {
+                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                    this.playAnimation(this.IMAGES_WALKING);
+                }
+            }
+        }, 1000);
 
+        setInterval(() => {
             if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
 
             }
-
-            if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGES_JUMPING);
-            }
-
-            {
-
-                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                    this.playAnimation(this.IMAGES_WALKING);
-                }
-            } */
-
-
-        let charDead = setInterval(() => {
-
-            if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DEAD);
-                gameOver();
-                clearInterval(charDead);
-            }
-        }, 300);
-
-        let charJump = setInterval(() => {
-
-            if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGES_JUMPING);
-            }
-
-
-
         }, 300);
 
 
-        //TODO - 
-        let hurtInterval = setInterval(() => {
-
-            if (this.isHurt()) {
-                this.playAnimation(this.IMAGES_HURT)
-                clearInterval(hurtInterval);
-
-            }
-
-
-
-
-        }, 500);
-
-
+        /*  let charDead = setInterval(() => {
+ 
+             if (this.isDead()) {
+                 this.playAnimation(this.IMAGES_DEAD);
+                 gameOver();
+                 clearInterval(charDead);
+             }
+         }, 300);
+ 
+         let charJump = setInterval(() => {
+ 
+             if (this.isAboveGround()) {
+                 this.playAnimation(this.IMAGES_JUMPING);
+             }
+ 
+ 
+ 
+         }, 300);
+ 
+ 
+         //TODO - 
+         let hurtInterval = setInterval(() => {
+ 
+             if (this.isHurt()) {
+                 this.playAnimation(this.IMAGES_HURT)
+                 clearInterval(hurtInterval);
+ 
+             }
+ 
+ 
+ 
+ 
+         }, 500); */
 
 
 
 
     }
 
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
 

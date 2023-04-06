@@ -1,4 +1,5 @@
 let vid = document.getElementById('myVideo');
+let gameSound = new Audio('audio/guitar.mp3')
 let canvas;
 let world;
 let keyboard = new Keyboard();
@@ -22,12 +23,15 @@ function gameStop() {
 
 
 function init() {
+    gameSound.loop = true;
+    gameSound.play();
 
     document.getElementById('startGame').classList.add('d-none');
     document.getElementById('myVideo').classList.add('d-none');
     document.getElementById('start').classList.add('d-none');
+    document.getElementById('gameOver').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
-
+    document.getElementById('instruction').classList.remove('d-none');
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 
@@ -41,24 +45,17 @@ function init() {
 //STOPPT ALLE INTERVALLE 
 function gameOver() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
+    document.getElementById('gameOver').classList.remove('d-none');
     document.getElementById('endPic').classList.remove('d-none');
     document.getElementById('reStart').classList.remove('d-none');
     document.getElementById('canvas').classList.add('d-none');
+    gameSound.pause();
 
 
 }
-function restartGame() {
-
-    document.getElementById('startGame').classList.add('d-none');
-    document.getElementById('myVideo').classList.add('d-none');
-    document.getElementById('start').classList.add('d-none');
-    document.getElementById('canvas').classList.remove('d-none');
-
-    canvas = document.getElementById('canvas');
-    world = new World(canvas, keyboard);
 
 
-}
+
 
 window.addEventListener("keydown", (e) => {
     if (e.keyCode == 39) {
