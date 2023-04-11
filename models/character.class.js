@@ -132,11 +132,11 @@ class Character extends MoveableObject {
                 if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                     this.playAnimation(this.IMAGES_WALKING);
                 }
-                if (this.sleeping && !this.isAboveGround() && !this.isHurt() && !this.isDead()) {
+                if (this.sleeping() && !this.isAboveGround() && !this.isHurt() && !this.isDead()) {
                     this.playAnimation(this.IMAGES_SLEEP);
                 }
             }
-        }, 1000);
+        }, 100);
 
         let charHurt = setInterval(() => {
             if (this.isHurt()) {
