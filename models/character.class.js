@@ -81,7 +81,6 @@ class Character extends MoveableObject {
         return (
             !this.world.keyboard.RIGHT &&
             !this.world.keyboard.LEFT &&
-            !this.world.keyboard.DOWN &&
             !this.world.keyboard.SPACE &&
             !this.world.keyboard.D
         );
@@ -151,7 +150,7 @@ class Character extends MoveableObject {
 
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
-                /*   gameOver(); */
+                gameOver();
                 clearInterval(charDead);
             }
         }, 300);
