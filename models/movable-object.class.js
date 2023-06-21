@@ -1,4 +1,5 @@
-class MoveableObject extends DrawableObject {  //Eine Class ist eine Beschreibung wie ein Objekt aussehen soll wie eine Schablone oder Vorlage
+class MoveableObject extends DrawableObject {  
+    //Eine Class ist eine Beschreibung wie ein Objekt aussehen soll wie eine Schablone oder Vorlage
     speed = 0.15;
     otherDirection = false;
     speedY = 0;

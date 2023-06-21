@@ -54,6 +54,13 @@
 
             <span class="left-arrow"><img src="img/icons/exit.png" alt="Pfeil nach rechts"> EXIT FULLSCREEN</span>
 
+            <button id="soundOff" class="sound-btn d-none" onclick="soundOff()">
+                <img src="img/icons/icon-sound.png" alt="">
+            </button>
+
+            <button id="soundOn" class="sound-btn d-none" onclick="soundOn()">
+                <img src="img/icons/icon-mute.png" alt="">
+            </button>
 
 
 
@@ -61,16 +68,15 @@
         <button onclick="initLevel(),init()" id="start" class="start-btn">PLAY !</button>
         <canvas id="canvas" width="720" height="480" class="d-none">
 
-
-
         </canvas>
 
         <div class="instruction d-none-mobile  d-none" id="instruction">
-            <span class="left-arrow"><img src="img/icons/Left.png" alt="Pfeil nach links"> LEFT</span>
 
+            <span class="left-arrow"><img src="img/icons/Left.png" alt="Pfeil nach links"> LEFT</span>
             <span class="left-arrow"><img src="img/icons/Right.png" alt="Pfeil nach rechts"> RIGHT</span>
             <span class="left-arrow"><img src="img/icons/Space.png" alt="Pfeil nach rechts"> Jump</span>
             <span class="left-arrow"><img src="img/icons/D.png" alt="Pfeil nach rechts"> ThrowBottle</span>
+
 
 
 
@@ -78,7 +84,7 @@
         <div class="gameOver" id="gameOver">
             <img id="endPic" class="endPic d-none" src="img/9_intro_outro_screens/game_over/game over.png"
                 alt="Game Over">
-            <button onclick="init()" id="reStart" class="reStart d-none">RESTART !</button>
+            <button onclick="initLevel(),init()" id="reStart" class="reStart d-none">RESTART !</button>
         </div>
 
     </div>

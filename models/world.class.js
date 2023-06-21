@@ -1,5 +1,4 @@
 class World {
-
     character = new Character();
     level = level1;
     canvas;
@@ -10,10 +9,6 @@ class World {
     bottleBar = new bottleBar();
     coinBar = new coinBar();
     throwableObjects = [];
-
-
-
-
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -27,13 +22,10 @@ class World {
 
     setWorld() {
         this.character.world = this;
-
     }
 
     run() {
         setInterval(() => {
-
-
             this.checkBottleChickenCollisions();
             this.checkThrowObjects();
             this.checkCoinCollisions();
@@ -52,12 +44,11 @@ class World {
     }
 
     checkThrowObjects() {//TODO - 
-        if (this.keyboard.D) {
+        if (this.keyboard.D && this.character.bottle > 0) {
             let bottle = new ThrowableObjects(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
             this.removeBottle();
             this.bottleBar.setPercentage(this.character.bottle);
-
         }
     }
     removeBottle() {
@@ -72,7 +63,6 @@ class World {
                     this.character.hit();
                     this.statusBar.setPercentage(this.character.energy);
                     console.log('Colission with char', this.character.energy);
-
                 }
             });
         }, 1000);
@@ -88,7 +78,7 @@ class World {
         });
     }
 
-    //Coin wird eingesammelt und die Coinbar wird um 1aufgefüllt
+    //Coin wird eingesammelt und die Coinbar wird um 1 aufgefüllt
     takeCoin(coin) {
         this.character.coins++;
         this.coinBar.setPercentage(this.character.coins);
@@ -132,7 +122,6 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             if (bottle.isColliding(enemy)) {
                 enemy.hit();
-
             }
         });
     }

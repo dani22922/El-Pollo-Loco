@@ -3,7 +3,7 @@ class Chicken extends MoveableObject {
     height = 100;
     width = 100;
     energy = 200;
-    chicken_sound = new Audio('audio/chicken.mp3');
+    /*  chicken_sound = new Audio('audio/chicken.mp3'); */
 
 
 
@@ -34,8 +34,8 @@ class Chicken extends MoveableObject {
         setInterval(() => {
             if (!this.isDead()) {
                 this.moveLeft();
-                this.chicken_sound.volume = 0.01;
-                this.chicken_sound.play();
+                /*   this.chicken_sound.volume = 0.01;
+                  this.chicken_sound.play(); */
             }
         }, 1000 / 60);
 

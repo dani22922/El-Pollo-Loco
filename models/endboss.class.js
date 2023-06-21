@@ -4,7 +4,7 @@ class Endboss extends MoveableObject {
     width = 250;
     y = 45;
     energy = 400;
-    /* hadFirstContact = false; */
+    hadFirstContact = false;
 
     IMAGES_WALKING = [
         'img/4_enemie_boss_chicken/1_walk/G1.png',
@@ -32,11 +32,9 @@ class Endboss extends MoveableObject {
     ];
 
     IMAGES_DEAD = [
-
         'img/4_enemie_boss_chicken/5_dead/G24.png',
         'img/4_enemie_boss_chicken/5_dead/G25.png',
         'img/4_enemie_boss_chicken/5_dead/G26.png'
-
     ];
 
 
@@ -47,56 +45,47 @@ class Endboss extends MoveableObject {
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
-        this.x = 2550;
         this.animate();
+        this.x = 2550;
 
     }
 
 
 
     animate() {
-
-        /*   let a = 0
-          setInterval(() => {
-              if (a < 10) {
-                  this.playAnimation(this.IMAGES_ALERT);
-              } else {
-                  this.playAnimation(this.IMAGES_WALKING);
-              }
-              a++;
-  
-              if (world.this.character.x > 2000 && !hadFirstContact) {
-                  a = 0;
-                  hadFirstContact = true;
-              }
-          }, 150); */
-
+        let i = 0;
         setInterval(() => {
-            this.playAnimation(this.IMAGES_WALKING);
-            this.moveLeft();
-        }, 200);
+            if (i < 7) {
+                this.playAnimation(this.IMAGES_ALERT);
+            } else {
+                this.playAnimation(this.IMAGES_WALKING);
 
-        setInterval(() => {
-            if (this.isHurt())
-                this.playAnimation(this.IMAGES_HURT);
-        }, 400);
-
-        setInterval(() => {
-            if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DEAD);
-
-                gameOver();
             }
-        }, 200);
-
-
-
-
-
+            i++;
+            if (world.character.x > 2050 && !this.hadFirstContact) {
+                i = 0;
+                this.hadFirstContact = true;
+                this.moveLeft();
+            }
+        }, 400);
 
 
     }
 }
 
 
+/*    
+setInterval(() => {
+   if (this.isHurt())
+       this.playAnimation(this.IMAGES_HURT);
+
+}, 1000);
+
+setInterval(() => {
+   if (this.isDead()) {
+       this.playAnimation(this.IMAGES_DEAD);
+       gameOver();
+   }
+}, 200);
+} */
 

@@ -109,6 +109,12 @@ canvas {
     width: 32px;
 }
 
+.sound-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 .right-arrow {
     display: flex;
     align-items: center;

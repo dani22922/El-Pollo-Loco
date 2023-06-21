@@ -20,11 +20,9 @@ function gameStop() {
     vid.play();
 } */
 
-
-
 function init() {
     gameSound.loop = true;
-    gameSound.volume = 0.35;
+    gameSound.volume = 0.05;
     gameSound.play();
 
     document.getElementById('startGame').classList.add('d-none');
@@ -33,13 +31,11 @@ function init() {
     document.getElementById('gameOver').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('instruction').classList.remove('d-none');
+    document.getElementById('soundOff').classList.remove('d-none');
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 
-
-
     console.log('My Character is', world.character);
-
 
 }
 
@@ -52,7 +48,18 @@ function gameOver() {
     document.getElementById('canvas').classList.add('d-none');
     gameSound.pause();
 
+}
 
+function soundOff() {
+    gameSound.pause();
+    document.getElementById('soundOn').classList.remove('d-none');
+    document.getElementById('soundOff').classList.add('d-none');
+}
+
+function soundOn() {
+    gameSound.play();
+    document.getElementById('soundOn').classList.add('d-none');
+    document.getElementById('soundOff').classList.remove('d-none');
 }
 
 
