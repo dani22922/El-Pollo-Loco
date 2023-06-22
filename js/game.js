@@ -36,7 +36,6 @@ function init() {
     world = new World(canvas, keyboard);
 
     console.log('My Character is', world.character);
-
 }
 
 //STOPPT ALLE INTERVALLE 
@@ -47,7 +46,6 @@ function gameOver() {
     document.getElementById('reStart').classList.remove('d-none');
     document.getElementById('canvas').classList.add('d-none');
     gameSound.pause();
-
 }
 
 function soundOff() {
@@ -108,14 +106,13 @@ window.addEventListener("keyup", (e) => {
 });
 
 //FULLSCREEN
-
 function fullscreen() {
     let fullscreen = document.getElementById('fullscreen');
+
     enterFullscreen(fullscreen);
 }
 
 // ENTER FULLSCREEN
-
 function enterFullscreen(element) {
     if (element.requestFullscreen) {
         element.requestFullscreen();
@@ -127,11 +124,11 @@ function enterFullscreen(element) {
 }
 
 // EXIT FULLSCREEN
-
 function exitFullscreen() {
     if (document.exitFullscreen) {
         document.exitFullscreen();
     } else if (document.webkitExitFullscreen) {
         document.webkitExitFullscreen();
     }
+
 }

@@ -38,6 +38,7 @@
     <h1></h1>
 
     <div id="fullscreen" class="fullscreen">
+
         <div class="start-game" id="startGame">
 
             <video class="myvideo" id="myVideo" muted autoplay>
@@ -47,12 +48,20 @@
             </video>
 
         </div>
-        <div class="instruction-fullscreen  d-none-mobile " id="instructionFullscreen">
-            <span class="full"><img onclick="fullscreen()" src="img/icons/fullscreen-12-16.png"
-                    alt="Pfeil nach links">ENTER
-                FULLSCREEN</span>
 
-            <span class="left-arrow"><img src="img/icons/exit.png" alt="Pfeil nach rechts"> EXIT FULLSCREEN</span>
+
+        <div class="instruction-fullscreen  d-none-mobile " id="instructionFullscreen">
+
+
+            <span class="full">
+                <img onclick="fullscreen()" src="img/icons/fullscreen-12-16.png" alt="Pfeil nach links">
+                ENTER FULLSCREEN
+            </span>
+
+            <span class="exit">
+                <img onclick="exitFullscreen()" src="img/icons/exit.png" alt="Pfeil nach rechts">
+                EXIT FULLSCREEN
+            </span>
 
             <button id="soundOff" class="sound-btn d-none" onclick="soundOff()">
                 <img src="img/icons/icon-sound.png" alt="">
@@ -65,7 +74,10 @@
 
 
         </div>
+
         <button onclick="initLevel(),init()" id="start" class="start-btn">PLAY !</button>
+
+
         <canvas id="canvas" width="720" height="480" class="d-none">
 
         </canvas>
@@ -81,6 +93,9 @@
 
 
         </div>
+
+
+
         <div class="gameOver" id="gameOver">
             <img id="endPic" class="endPic d-none" src="img/9_intro_outro_screens/game_over/game over.png"
                 alt="Game Over">

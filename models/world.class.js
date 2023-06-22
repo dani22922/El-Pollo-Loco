@@ -17,7 +17,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        this.charCheck();
+
     }
 
     setWorld() {
@@ -31,17 +31,11 @@ class World {
             this.checkCoinCollisions();
             this.checkBottleCollisons();
             this.checkJumpOnChicken();
+            this.checkCollisions();
 
         }, 300);
     }
-    charCheck() {
-        setInterval(() => {
 
-            this.checkCollisions();
-
-
-        }, 1000);
-    }
 
     checkThrowObjects() {//TODO - 
         if (this.keyboard.D && this.character.bottle > 0) {
@@ -72,7 +66,6 @@ class World {
     checkCoinCollisions() {
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)) {
-                console.log('take', coin)
                 this.takeCoin(coin);
             }
         });
@@ -90,7 +83,6 @@ class World {
     checkBottleCollisons() {
         this.level.bottle.forEach((bottle) => {
             if (this.character.isColliding(bottle)) {
-                console.log('take', bottle)
                 this.takeBottle(bottle);
             }
         });
@@ -101,7 +93,6 @@ class World {
         this.character.bottle++;
         this.bottleBar.setPercentage(this.character.bottle);
         this.level.bottle.splice(this.level.bottle.indexOf(bottle), 1);
-
     }
 
 
@@ -114,7 +105,7 @@ class World {
                     console.log('Colission with enemy, energy', enemy.energy);
                 }
             });
-        })
+        });
     }
 
     //Der Gegner wird von der Flasche getroffen
@@ -132,8 +123,6 @@ class World {
                 !this.character.isHurt();
                 enemy.hitByBottle();// Der Sprung macht genauso viel Schaden wie eine Flasche
                 this.character.jump();
-                console.log('jumping', enemy.energy)
-
             }
         });
     }

@@ -2,10 +2,11 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    /*  background: url(img/EL\ Pollo\ loco.png); */
+    background-image: url('img/background-img.png');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    background-position: center;
+    /* height: 100vh; */
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     font-size: x-large;
@@ -13,11 +14,18 @@ body {
 }
 
 .fullscreen {
-    background-color: white;
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: white;
+}
+
+.fullscreen-bg {
+    background-image: url('img/background-img.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 
@@ -25,12 +33,6 @@ body {
     width: 1080px;
     height: 720px;
 }
-
-canvas {
-    background-color: black;
-    display: block;
-}
-
 
 .start-game img {
     width: 720px;
@@ -55,7 +57,6 @@ canvas {
     font-size: xx-large;
     height: 50px;
     cursor: pointer;
-
 }
 
 .instruction-fullscreen {
@@ -64,8 +65,6 @@ canvas {
     padding-bottom: 16px;
     width: 100%;
 }
-
-
 
 .endPic {
     width: 720px;
@@ -84,7 +83,6 @@ canvas {
     height: 30px;
     cursor: pointer;
     margin-top: 32px;
-
 }
 
 .gameOver {
@@ -107,6 +105,18 @@ canvas {
 .left-arrow img {
     height: 32px;
     width: 32px;
+}
+
+.exit {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.exit img {
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
 }
 
 .sound-btn {
@@ -143,6 +153,12 @@ canvas {
     height: 32px;
     width: 32px;
     cursor: pointer;
+}
+
+canvas {
+    display: block;
+    /* background-color: white; */
+
 }
 
 @keyframes mymove {
@@ -186,7 +202,7 @@ canvas {
 }
 
 @media only screen and (max-width: 720px) {
-    #canvas {
+    canvas {
         width: 100%;
     }
 
@@ -208,9 +224,9 @@ canvas {
         display: none;
     }
 
+
+
 }
-
-
 
 
 

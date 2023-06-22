@@ -1,4 +1,4 @@
-class MoveableObject extends DrawableObject {  
+class MoveableObject extends DrawableObject {
     //Eine Class ist eine Beschreibung wie ein Objekt aussehen soll wie eine Schablone oder Vorlage
     speed = 0.15;
     otherDirection = false;
@@ -31,15 +31,12 @@ class MoveableObject extends DrawableObject {
             this.y + this.height > mo.y &&
             this.x < mo.x &&
             this.y < mo.y + mo.height;
-
-        // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
-
     }
+
     hit() {
         this.energy -= 5;
         if (this.energy < 0) {
             this.energy = 0;
-
         } else {
             this.lasthit = new Date().getTime(); //  Zeit speichern in Zahlenform millisekunden seit 1.1.1970
         }
@@ -65,23 +62,18 @@ class MoveableObject extends DrawableObject {
         }
     }
 
-
-
     moveRight() {
         this.x += this.speed;
-
     }
-
 
     moveLeft() {
         this.x -= this.speed;
-
     }
 
     playAnimation(images) {
         // anhand des Bildes ---> Animation
         let i = this.currentImage % images.length; // let i = 0 % 6;    % Modulo bedeutet Mathematisch Rest 
-        // i= 0,1,2,3,4,5,6  ,0,1,2,3,4,5,6  ,0,1,2,3,4,5,6  ,0,1,2,3,4,5,6 0,1,2,3,4,5,6 0,1,2,3,4,5,6
+        // i= 0,1,2,3,4,5,6 ,0,1,2,3,4,5,6 ,0,1,2,3,4,5,6  
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
@@ -89,6 +81,6 @@ class MoveableObject extends DrawableObject {
 
     jump() {
         this.speedY = 30;
-
     }
+
 }
