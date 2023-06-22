@@ -102,6 +102,7 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (enemy.isColliding(bottle)) {
                     enemy.hitByBottle();
+                    bottle.hitEnemy = true;
                     console.log('Colission with enemy, energy', enemy.energy);
                 }
             });
