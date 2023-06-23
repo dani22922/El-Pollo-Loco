@@ -4,6 +4,7 @@ class SmallChicken extends MoveableObject {
     width = 70;
     energy = 100;
 
+
     /* chicken_sound = new Audio('audio/chicken.mp3'); */
 
 
@@ -35,7 +36,6 @@ class SmallChicken extends MoveableObject {
         setInterval(() => {
             if (!this.isDead()) {
                 this.moveLeft();
-                /*  this.chicken_sound.play(); */
             }
         }, 1000 / 60);
 
@@ -43,12 +43,9 @@ class SmallChicken extends MoveableObject {
             this.playAnimation(this.IMAGES_WALKING);
         }, 100);
 
-
         setInterval(() => {
-
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
-
             }
         }, 50);
     }

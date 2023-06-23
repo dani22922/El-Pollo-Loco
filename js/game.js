@@ -31,7 +31,6 @@ function init() {
     document.getElementById('gameOver').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('instruction').classList.remove('d-none');
-    document.getElementById('soundOff').classList.remove('d-none');
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 
@@ -105,14 +104,12 @@ window.addEventListener("keyup", (e) => {
     }
 });
 
-//FULLSCREEN
+// ENTER FULLSCREEN
 function fullscreen() {
     let fullscreen = document.getElementById('fullscreen');
-
     enterFullscreen(fullscreen);
 }
 
-// ENTER FULLSCREEN
 function enterFullscreen(element) {
     if (element.requestFullscreen) {
         element.requestFullscreen();
@@ -123,6 +120,8 @@ function enterFullscreen(element) {
     }
 }
 
+
+
 // EXIT FULLSCREEN
 function exitFullscreen() {
     if (document.exitFullscreen) {
@@ -130,5 +129,17 @@ function exitFullscreen() {
     } else if (document.webkitExitFullscreen) {
         document.webkitExitFullscreen();
     }
+}
 
+//OPERA Browser fix
+function checkOrientation() {
+    if (window.matchMedia("(orientation: landscape)").matches) {
+        if (window.innerHeight < 480) {
+            newHeight = window.innerHeight;
+            document.getElementById('canvas').style.height = `${newHeight}px`;
+        }
+    }
+    else {
+        document.getElementById('canvas').style.height = `100%`;
+    }
 }

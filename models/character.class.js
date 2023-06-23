@@ -4,9 +4,10 @@ class Character extends MoveableObject {
     width = 150;
     y = 80;
     speed = 10;
-    energy = 200;
+    energy = 100;
     coins = 0;
     bottle = 0;
+
 
     /*   jump_sound = new Audio('audio/jump-sound.mp3'); */
 
@@ -75,7 +76,6 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.applyGravity();
         this.animate();
-
     }
 
 
@@ -99,13 +99,12 @@ class Character extends MoveableObject {
             if (this.world.keyboard.LEFT && this.x > 0) {
                 this.moveLeft();
                 this.otherDirection = true;
-
             }
 
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
-
             }
+
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
 
@@ -128,35 +127,17 @@ class Character extends MoveableObject {
         setInterval(() => {
             if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
-                clearInterval();
-
             }
-        }, 1000);
+        }, 500);
 
 
         setInterval(() => {
-
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
                 gameOver();
                 clearInterval();
             }
         }, 300);
-
-
-        //TODO - 
-        setInterval(() => {
-
-            if (this.isHurt()) {
-                this.playAnimation(this.IMAGES_HURT)
-                clearInterval();
-
-            }
-
-        }, 500);
-
-
-
 
     }
 

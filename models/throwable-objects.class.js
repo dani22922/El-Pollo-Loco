@@ -47,7 +47,7 @@ class ThrowableObjects extends MoveableObject {
         }, 1000 / 30);
     }
 
-    animateBottle(y) {
+    animateBottle() {
         this.playAnimation(this.IMAGES_BOTTLE);
         if (this.bottleHit()) {
             this.playAnimation(this.IMAGES_SPLASH);

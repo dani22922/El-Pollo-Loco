@@ -47,40 +47,40 @@ class Endboss extends MoveableObject {
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
         this.animate();
-        this.bossDead()
-
+        this.bossDead();
     }
 
 
 
     animate() {
         let i = 0;
-        setInterval(() => {
+        const animationInterval = setInterval(() => {
             if (i < 7) {
                 this.playAnimation(this.IMAGES_ALERT);
-            }
-            else {
+            } else if (!this.isDead()) {
                 this.playAnimation(this.IMAGES_WALKING);
                 this.moveLeft();
+            } else {
+                clearInterval(animationInterval); // Stop the animation
             }
             i++;
             if (world.character.x > 2050 && !this.hadFirstContact) {
                 i = 0;
                 this.hadFirstContact = true;
-
             }
-
         }, 1000 / 10);
-
     }
 
     bossDead() {
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
-                gameOver();
+
             }
         }, 200);
+
     }
+
+
 
 }

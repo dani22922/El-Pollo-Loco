@@ -17,6 +17,8 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.checkCollisions();
+
 
     }
 
@@ -31,9 +33,7 @@ class World {
             this.checkCoinCollisions();
             this.checkBottleCollisons();
             this.checkJumpOnChicken();
-            this.checkCollisions();
-
-        }, 300);
+        }, 500);
     }
 
 
@@ -56,10 +56,9 @@ class World {
                 if (this.character.isColliding(enemy) && !enemy.isDead()) {
                     this.character.hit();
                     this.statusBar.setPercentage(this.character.energy);
-                    console.log('Colission with char', this.character.energy);
                 }
             });
-        }, 1000);
+        }, 500);
     }
 
     //Character Coin Collision
@@ -76,7 +75,6 @@ class World {
         this.character.coins++;
         this.coinBar.setPercentage(this.character.coins);
         this.level.coins.splice(this.level.coins.indexOf(coin), 1);
-
     }
 
     //Kollision zwischen character und Flasche

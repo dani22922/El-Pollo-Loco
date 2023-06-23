@@ -1,12 +1,13 @@
 body {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     background-image: url('img/background-img.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    /* height: 100vh; */
+    height: 100%;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     font-size: x-large;
@@ -14,14 +15,14 @@ body {
 }
 
 .fullscreen {
-    align-items: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    background-color: white;
+    margin-top: 90px;
 }
 
-.fullscreen-bg {
+#fullscreen::backdrop {
     background-image: url('img/background-img.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -30,8 +31,8 @@ body {
 
 
 #myVideo {
-    width: 1080px;
-    height: 720px;
+    width: 720px;
+    height: 480px;
 }
 
 .start-game img {
@@ -156,6 +157,8 @@ body {
 }
 
 canvas {
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px 2px;
     display: block;
     /* background-color: white; */
 
@@ -185,7 +188,7 @@ canvas {
 }
 
 /* MOBILE ANSICHT VIDEO */
-@media only screen and (max-width: 1080px) {
+/* @media only screen and (max-width: 1080px) {
     video {
         width: 100%;
     }
@@ -199,7 +202,7 @@ canvas {
     }
 
 
-}
+} */
 
 @media only screen and (max-width: 720px) {
     canvas {
@@ -227,18 +230,6 @@ canvas {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 .d-none {
     display: none;
