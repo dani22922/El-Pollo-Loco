@@ -1,6 +1,5 @@
 let level1;
 function initLevel() {
-
     level1 = new Level(
 
         [
@@ -14,8 +13,6 @@ function initLevel() {
             new SmallChicken(),
             new Endboss()
         ],
-
-
 
         [
             new Cloud()
@@ -49,7 +46,6 @@ function initLevel() {
         ],
 
         [
-
             new Coin(300, 110),
             new Coin(800, 210),
             new Coin(950, 80),
@@ -64,7 +60,5 @@ function initLevel() {
             new collectBottle(1200, 330),
             new collectBottle(1550, 330)
         ]
-
-
     );
 }

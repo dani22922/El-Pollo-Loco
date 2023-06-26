@@ -13,12 +13,7 @@ class DrawableObject {
     }
 
     draw(ctx) {
-        /*   try { */
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-        /*   } /* catch (e) {
-              console.warn('Error loading image', e);
-              console.log('could not load image', this.img);
-          } */
     }
 
     drawFrame(ctx) {
@@ -31,7 +26,6 @@ class DrawableObject {
         }
     }
 
-
     loadImages(arr) {
         arr.forEach((path) => {
             let img = new Image();
@@ -39,7 +33,5 @@ class DrawableObject {
             this.imageCache[path] = img;
 
         });
-
     }
-
 }

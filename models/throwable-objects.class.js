@@ -17,7 +17,6 @@ class ThrowableObjects extends MoveableObject {
         ];
     hitEnemy = false;
 
-
     constructor(x, y) {
         super().loadImage('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png');
         this.loadImages(this.IMAGES_BOTTLE);
@@ -28,7 +27,6 @@ class ThrowableObjects extends MoveableObject {
         this.width = 70;
         this.throw(x, y);
         this.animate();
-
     }
 
     throw(x, y) {
@@ -56,11 +54,6 @@ class ThrowableObjects extends MoveableObject {
     }
     bottleHit() {
         return this.hitEnemy || !this.isAboveGround();
-
     }
-
-
-
-
 
 }

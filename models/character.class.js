@@ -7,10 +7,7 @@ class Character extends MoveableObject {
     energy = 100;
     coins = 0;
     bottle = 0;
-
-
     /*   jump_sound = new Audio('audio/jump-sound.mp3'); */
-
 
     IMAGES_SLEEP = [
         'img/2_character_pepe/1_idle/long_idle/I-11.png',
@@ -25,7 +22,6 @@ class Character extends MoveableObject {
         'img/2_character_pepe/1_idle/long_idle/I-20.png'
     ];
 
-
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
         'img/2_character_pepe/2_walk/W-22.png',
@@ -34,16 +30,14 @@ class Character extends MoveableObject {
         'img/2_character_pepe/2_walk/W-25.png',
         'img/2_character_pepe/2_walk/W-26.png'
     ];
-    IMAGES_JUMPING = [
 
+    IMAGES_JUMPING = [
         'img/2_character_pepe/3_jump/J-33.png',
         'img/2_character_pepe/3_jump/J-34.png',
         'img/2_character_pepe/3_jump/J-35.png',
         'img/2_character_pepe/3_jump/J-36.png',
         'img/2_character_pepe/3_jump/J-37.png',
         'img/2_character_pepe/3_jump/J-38.png',
-
-
     ];
 
     IMAGES_HURT = [
@@ -53,7 +47,6 @@ class Character extends MoveableObject {
     ];
 
     IMAGES_DEAD = [
-
         'img/2_character_pepe/5_dead/D-51.png',
         'img/2_character_pepe/5_dead/D-52.png',
         'img/2_character_pepe/5_dead/D-53.png',
@@ -78,7 +71,6 @@ class Character extends MoveableObject {
         this.animate();
     }
 
-
     sleeping() {
         return (
             !this.world.keyboard.RIGHT &&
@@ -87,7 +79,6 @@ class Character extends MoveableObject {
             !this.world.keyboard.D
         );
     }
-
 
     animate() {
         setInterval(() => {
@@ -104,20 +95,18 @@ class Character extends MoveableObject {
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
             }
-
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
-
 
         setInterval(() => {
             if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
-                /*   this.jump_sound.volume = 0.15;
-                  this.jump_sound.play(); */
             }
+
             if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 this.playAnimation(this.IMAGES_WALKING);
             }
+
             if (this.sleeping() && !this.isAboveGround() && !this.isHurt() && !this.isDead()) {
                 this.playAnimation(this.IMAGES_SLEEP);
             }
@@ -138,9 +127,7 @@ class Character extends MoveableObject {
                 clearInterval();
             }
         }, 300);
-
     }
-
 }
 
 

@@ -3,7 +3,6 @@ let gameSound = new Audio('audio/guitar.mp3')
 let canvas;
 let world;
 let keyboard = new Keyboard();
-
 let intervalIds = [];
 
 function setStoppableInterval(fn, time) {
@@ -15,16 +14,10 @@ function gameStop() {
     intervalIds.forEach(clearInterval);
 }
 
-
-/* function playVid() {
-    vid.play();
-} */
-
 function init() {
     gameSound.loop = true;
     gameSound.volume = 0.05;
     gameSound.play();
-
     document.getElementById('startGame').classList.add('d-none');
     document.getElementById('myVideo').classList.add('d-none');
     document.getElementById('start').classList.add('d-none');
@@ -33,18 +26,19 @@ function init() {
     document.getElementById('instruction').classList.remove('d-none');
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-
     console.log('My Character is', world.character);
 }
 
 //STOPPT ALLE INTERVALLE 
 function gameOver() {
-    for (let i = 1; i < 9999; i++) window.clearInterval(i);
-    document.getElementById('gameOver').classList.remove('d-none');
-    document.getElementById('endPic').classList.remove('d-none');
-    document.getElementById('reStart').classList.remove('d-none');
-    document.getElementById('canvas').classList.add('d-none');
-    gameSound.pause();
+    setTimeout(() => {
+        for (let i = 1; i < 9999; i++) window.clearInterval(i);
+        document.getElementById('gameOver').classList.remove('d-none');
+        document.getElementById('endPic').classList.remove('d-none');
+        document.getElementById('reStart').classList.remove('d-none');
+        document.getElementById('canvas').classList.add('d-none');
+        gameSound.pause();
+    }, 2000);
 }
 
 function soundOff() {
@@ -58,9 +52,6 @@ function soundOn() {
     document.getElementById('soundOn').classList.add('d-none');
     document.getElementById('soundOff').classList.remove('d-none');
 }
-
-
-
 
 window.addEventListener("keydown", (e) => {
     if (e.keyCode == 39) {
@@ -119,8 +110,6 @@ function enterFullscreen(element) {
         element.webkitRequestFullscreen();
     }
 }
-
-
 
 // EXIT FULLSCREEN
 function exitFullscreen() {

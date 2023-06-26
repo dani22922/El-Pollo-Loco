@@ -7,8 +7,6 @@ class MoveableObject extends DrawableObject {
     energy = 100;
     lasthit = 0;
 
-
-
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -82,5 +80,4 @@ class MoveableObject extends DrawableObject {
     jump() {
         this.speedY = 30;
     }
-
 }

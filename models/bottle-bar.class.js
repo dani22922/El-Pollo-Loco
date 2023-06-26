@@ -1,5 +1,4 @@
 class bottleBar extends DrawableObject {
-
     IMAGES = [
         'img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/0.png',
         'img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/20.png',
@@ -21,7 +20,6 @@ class bottleBar extends DrawableObject {
         this.setPercentage(100);
     }
 
-    //
     setPercentage(percentage) {
         this.percentage = percentage; // => 0....5 Bilder aus dem Array je nach Prozent
         let path = this.IMAGES[this.resolveImageIndex()];
@@ -43,8 +41,4 @@ class bottleBar extends DrawableObject {
             return 0;
         }
     }
-
-
-
-
 }

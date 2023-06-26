@@ -1,6 +1,5 @@
 class Coin extends MoveableObject {
 
-
     width = 130;
     height = 130;
 
@@ -15,8 +14,6 @@ class Coin extends MoveableObject {
         this.animate();
         this.x = x;
         this.y = y;
-
-
     }
 
     animate() {

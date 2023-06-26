@@ -9,6 +9,7 @@ class World {
     bottleBar = new bottleBar();
     coinBar = new coinBar();
     throwableObjects = [];
+    endboss = this.level.enemies[this.level.enemies.length - 1];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -18,8 +19,8 @@ class World {
         this.setWorld();
         this.run();
         this.checkCollisions();
-
-
+        this.checkThrowObjects();
+        this.checkBottleChickenCollisions();
     }
 
     setWorld() {
@@ -28,23 +29,25 @@ class World {
 
     run() {
         setInterval(() => {
-            this.checkBottleChickenCollisions();
-            this.checkThrowObjects();
             this.checkCoinCollisions();
             this.checkBottleCollisons();
             this.checkJumpOnChicken();
-        }, 500);
+            this.checkGameOver();
+        }, 60);
     }
 
 
     checkThrowObjects() {//TODO - 
-        if (this.keyboard.D && this.character.bottle > 0) {
-            let bottle = new ThrowableObjects(this.character.x + 100, this.character.y + 100);
-            this.throwableObjects.push(bottle);
-            this.removeBottle();
-            this.bottleBar.setPercentage(this.character.bottle);
-        }
+        setInterval(() => {
+            if (this.keyboard.D && this.character.bottle > 0) {
+                let bottle = new ThrowableObjects(this.character.x + 100, this.character.y + 100);
+                this.throwableObjects.push(bottle);
+                this.removeBottle();
+                this.bottleBar.setPercentage(this.character.bottle);
+            }
+        }, 500);
     }
+
     removeBottle() {
         this.character.bottle -= 1;
     }
@@ -96,15 +99,16 @@ class World {
 
     //Bottle und Chicken Collision
     checkBottleChickenCollisions() {
-        this.throwableObjects.forEach((bottle) => {
-            this.level.enemies.forEach((enemy) => {
-                if (enemy.isColliding(bottle)) {
-                    enemy.hitByBottle();
-                    bottle.hitEnemy = true;
-                    console.log('Colission with enemy, energy', enemy.energy);
-                }
+        setInterval(() => {
+            this.throwableObjects.forEach((bottle) => {
+                this.level.enemies.forEach((enemy) => {
+                    if (enemy.isColliding(bottle)) {
+                        enemy.hitByBottle();
+                        bottle.hitEnemy = true;
+                    }
+                });
             });
-        });
+        }, 500);
     }
 
     //Der Gegner wird von der Flasche getroffen
@@ -126,14 +130,19 @@ class World {
         });
     }
 
-
-
+    checkGameOver() {
+        if (this.character.isDead()) {
+            gameOver();
+            // this.background_sound.pause();
+            // this.playSound(this.gameover_sound);
+        } else if (this.endboss && this.endboss.isDead()) {
+            gameOver();
+        }
+    }
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
         this.ctx.translate(this.camera_x, 0);
-
 
         this.addObjectsToMap(this.level.backgroundObjects);
 
@@ -143,9 +152,7 @@ class World {
         this.addToMap(this.coinBar);
         this.ctx.translate(this.camera_x, 0);// Camera Forwards, 
 
-
         this.addToMap(this.character);
-
         this.addObjectsToMap(this.level.bottle);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.clouds);
@@ -154,15 +161,13 @@ class World {
 
         this.ctx.translate(-this.camera_x, 0);
 
-
-
         //draw() wird immer wieder aufgerufen
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
         });
-
     }
+
     addObjectsToMap(objects) {
         objects.forEach(o => {
             this.addToMap(o);
@@ -181,6 +186,7 @@ class World {
             this.flipImageBack(mo);
         }
     }
+
     //wir spiegeln das Bild
     flipImage(mo) {
         this.ctx.save();
@@ -188,12 +194,12 @@ class World {
         this.ctx.scale(-1, 1);
         mo.x = mo.x * -1;
     }
-    // das Bild wird nochmal gespiegelt
+
+    // das Bild wird nochmal gespiegelt also zurück gedreht
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
     }
-
 }
 
 
