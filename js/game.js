@@ -37,6 +37,7 @@ function gameOver() {
         document.getElementById('endPic').classList.remove('d-none');
         document.getElementById('reStart').classList.remove('d-none');
         document.getElementById('canvas').classList.add('d-none');
+
         gameSound.pause();
     }, 2000);
 }

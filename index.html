@@ -72,26 +72,27 @@
 
 
         </canvas>
-        <div class="mobile-keys-container">
+
+        <div class="gameOver" id="gameOver">
+            <img id="endPic" class="endPic d-none" src="img/9_intro_outro_screens/game_over/game over.png"
+                alt="Game Over">
+            <button onclick="initLevel(),init(),soundOn()" id="reStart" class="reStart d-none">RESTART !</button>
+        </div>
+
+        <div id="mobileKeysContainer" class="mobile-keys-container d-none-buttons">
             <div id="mobileKeys" class="mobile-keys">
-                <div id="panels" class="panels1">
+                <div id="panels" class="panels">
                     <button class="mobile-movement" id="mobileLeft">
                         <img src="img/icons/walk-left.png" alt=""></button>
                     <button class="mobile-movement" id="mobileRight">
                         <img src="img/icons/walk-right.png" alt=""></button>
                 </div>
 
-                <div id="panels2" class="panels2">
+                <div id="panels2" class="panels">
                     <button class="mobile-movement" id="mobileJump"><img src="img/icons/jump-arrow.png" alt=""></button>
                     <button class="mobile-movement" id="mobileThrow"><img src="img/icons/throw.png" alt=""></button>
                 </div>
             </div>
-        </div>
-
-        <div class="gameOver" id="gameOver">
-            <img id="endPic" class="endPic d-none" src="img/9_intro_outro_screens/game_over/game over.png"
-                alt="Game Over">
-            <button onclick="initLevel(),init(),soundOn()" id="reStart" class="reStart d-none">RESTART !</button>
         </div>
 
         <div class="instruction d-none-mobile  d-none" id="instruction">

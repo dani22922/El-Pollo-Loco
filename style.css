@@ -11,7 +11,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     font-size: x-large;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 .fullscreen {
@@ -59,7 +59,7 @@ body {
     cursor: pointer;
     position: absolute;
     z-index: 999;
-    bottom: 27%;
+    bottom: 35%;
 }
 
 .instruction-fullscreen {
@@ -88,13 +88,60 @@ body {
     margin-top: 32px;
     position: absolute;
     z-index: 999;
-    bottom: 0%;
+    bottom: 25%;
+}
+
+.mobile-keys-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.mobile-keys {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.mobile-keys #panels {
+    order: 1;
+    /* Move the left and right buttons to the left side */
+}
+
+.mobile-keys #panels2 {
+    order: 2;
+    /* Move the jump and throw buttons to the right side */
+}
+
+
+.mobile-keys {
+    display: flex !important;
+    justify-content: space-between !important;
+
 }
 
 .mobile-movement {
     background-color: darkgoldenrod;
     border-radius: 100%;
     cursor: pointer;
+}
+
+.mobile-keys button {
+    display: flex;
+    height: 50px;
+    width: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-keys img {
+    height: 25px;
+}
+
+.panels {
+    display: flex;
 }
 
 .gameOver {
@@ -106,6 +153,7 @@ body {
 
 .endPic {
     animation: mymove 5s infinite;
+
 }
 
 .left-arrow {
@@ -171,8 +219,6 @@ canvas {
     border-radius: 12px;
     box-shadow: 2px 2px 2px 2px;
     display: block;
-    /* background-color: white; */
-
 }
 
 @keyframes mymove {
@@ -187,133 +233,76 @@ canvas {
         width: 100%;
     }
 
-    .btn_start {
-        width: 10%;
-        height: 10%;
-        font-size: 180%;
-
-    }
-
-    .game {
-        display: block;
-        width: 100%;
-        height: 100%;
-
-    }
-
     .start-game {
         width: 100%;
         height: 100%;
-
     }
 
     .gameOver {
         width: 100%;
         height: 100%;
     }
+
+    .d-none-buttons {
+        display: block !important;
+    }
 }
 
 @media only screen and (max-height: 480px) {
     canvas {
         height: 100vh;
+
     }
 
-    /* .game{
-        height: 100vh;
+    .d-none-buttons {
+        display: block !important;
     }
-    .startscreen {
-        height: 100vh;
-    }
-    .gameover {
-        height: 100vh;
-    } */
-
 }
 
-/* mobile panel buttons */
-.mobilepanel {
-    position: absolute;
-    display: none;
-    justify-content: space-between;
-    align-items: center;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-    z-index: 33 !important;
-}
-
-.mobile_move {
-    gap: 20px;
-    display: flex;
-    cursor: pointer;
-}
-
-.mobile_move div:hover {
-    filter: invert(100%) sepia(100%) saturate(7490%) hue-rotate(354deg) brightness(107%) contrast(103%);
-}
-
-.mobileIcon {
-    width: 32px;
-    height: 32px;
-}
-
-.mobileAction {
-    display: flex;
-    gap: 20px;
-    cursor: pointer;
-}
-
-.mobileAction div:hover {
-    filter: invert(100%) sepia(100%) saturate(7490%) hue-rotate(354deg) brightness(107%) contrast(103%);
-}
 
 @media only screen and (max-width: 480px) {
-    .mobilepanel {
-        display: flex !important;
+    .d-none-buttons {
+        display: block !important;
     }
 }
 
 @media screen and (orientation:portrait) and (max-width: 800px) {
-    h1 {
-        display: none !important;
+    .d-none-buttons {
+        display: block !important;
     }
 
-    .descr {
-        font-size: 130% !important;
-    }
-
-    .iconPanel {
-        z-index: 35 !important;
-
+    .d-none-mobile {
+        display: none;
     }
 }
 
 @media screen and (orientation:landscape) and (max-width: 896px) {
-    h1 {
-        display: none !important;
+    .d-none-buttons {
+        display: block !important;
     }
 
-    .game {
-        justify-content: center !important;
+    .d-none-mobile {
+        display: none;
+    }
+
+    .fullscreen {
+        height: 100vh;
         width: 100%;
-        height: 100%;
-        display: flex;
+
     }
 
-    .iconPanel {
-        z-index: 33 !important;
-        right: 148px;
+    .gameOver {
+        height: 90%;
+
     }
 
-    .mobilepanel {
-        display: flex !important;
-        left: 160px;
-        right: 160px;
+    .reStart {
+        bottom: 10%;
     }
+}
 
-    .descr {
-        font-size: 130% !important;
-    }
+.d-none-buttons {
+    display: none;
 }
 
 .d-none {
