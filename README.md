@@ -2,4 +2,4 @@
  2d Jump and Run Game
 
 Help Pepe to collect coins and salsa bottles.
-throw the bottles to fight his enemies or jump on their head.
+Throw bottles to fight his enemies or jump on their head.
